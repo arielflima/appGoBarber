@@ -33,8 +33,8 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   const { registerField, defaultValue = '', fieldName, error } = useField(name);
   const inputValueRef = useRef<InputValueReference>({ value: defaultValue });
 
-  const { isFocused, setIsFocused } = useState(false);
-  const { isFilled, setIsFilled } = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
