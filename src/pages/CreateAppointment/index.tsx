@@ -23,6 +23,12 @@ import {
   Title,
   OpenDatePickerButton,
   OpenDatePickerButtonText,
+  Schedule,
+  Section,
+  SectionTitle,
+  SectionContent,
+  Hour,
+  HourText,
 } from './styles';
 
 interface RouteParams {
@@ -182,6 +188,34 @@ const CreateAppointment: React.FC = () => {
       {afternoonAvailability.map(({ hourFormatted }) => (
         <Title key={hourFormatted}>{hourFormatted}</Title>
       ))}
+
+      <Schedule>
+        <Title>Escolha o horário</Title>
+
+        <Section>
+          <SectionTitle>Manhã</SectionTitle>
+
+          <SectionContent>
+            {morningAvailability.map(({ hourFormatted }) => (
+              <Hour key={hourFormatted}>
+                <HourText>{hourFormatted}</HourText>
+              </Hour>
+            ))}
+          </SectionContent>
+        </Section>
+
+        <Section>
+          <SectionContent>Tarde</SectionContent>
+
+          <SectionContent>
+            {afternoonAvailability.map(({ hourFormatted }) => (
+              <Hour key={hourFormatted}>
+                <HourText>{hourFormatted}</HourText>
+              </Hour>
+            ))}
+          </SectionContent>
+        </Section>
+      </Schedule>
     </Container>
   );
 };
