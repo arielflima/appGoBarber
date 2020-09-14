@@ -106,6 +106,7 @@ const Profile: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
+            <Icon name="chevron-left" color="#ff9000" size={24} />
             <BackButton onPress={handleGoBack}>
               <Icon name="chevron-left" size={24} color="#999591" />
             </BackButton>

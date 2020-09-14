@@ -82,3 +82,8 @@ export const ProviderMetaText = styled.Text`
   color: #999591;
   font-family: 'RobotoSlab-Regular';
 `;
+
+export const LogoutButton = styled(RectButton)`
+  align-items: center;
+  margin-left: 240px;
+`;

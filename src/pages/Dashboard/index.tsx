@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
 import Icon from 'react-native-vector-icons/Feather';
 
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +20,7 @@ import {
   ProviderName,
   ProviderMeta,
   ProviderMetaText,
+  LogoutButton,
 } from './styles';
 
 export interface Provider {
@@ -32,7 +32,7 @@ export interface Provider {
 const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
 
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const { navigate } = useNavigation();
 
   useEffect(() => {
@@ -52,6 +52,10 @@ const Dashboard: React.FC = () => {
     [navigate],
   );
 
+  const handleLogout = useCallback(() => {
+    signOut();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -59,6 +63,10 @@ const Dashboard: React.FC = () => {
           Bem vindo, {'\n'}
           <UserName>{user.name}</UserName>
         </HeaderTitle>
+
+        <LogoutButton onPress={handleLogout}>
+          <Icon name="external-link" color="#fff" size={24} />
+        </LogoutButton>
 
         <ProfileButton onPress={navigateToProfile}>
           <UserAvatar source={{ uri: user.avatar_url }} />
